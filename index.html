@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Tree App</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    #graphView { display: none; }
+    .container { margin: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container" id="formView">
+    <h2>Family Tree Form</h2>
+    <form id="familyForm">
+      <input type="text" id="name" placeholder="Name" required>
+      <select id="relationType">
+        <option value="parent">Parent of</option>
+        <option value="child">Child of</option>
+      </select>
+      <input type="text" id="relation" placeholder="Parent/Child Name" required>
+      <button type="button" id="addMember">Add Member</button>
+      <button id="exportJson">Export JSON</button>
+      <label for="importJson" class="button">Import JSON</label>
+      <input type="file" id="importJson" accept="application/json" style="display: none;">
+    </form>
+    <ul id="membersList"></ul>
+    <button id="viewGraph">View Family Tree</button>
+  </div>
+
+  <div class="container" id="graphView">
+    <h2>Family Tree Graph</h2>
+    <div id="familyTree" style="height: 500px;"></div>
+    <button id="editForm">Edit Family Tree</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
