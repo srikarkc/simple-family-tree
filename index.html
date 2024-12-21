@@ -4,14 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Family Tree App</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    #graphView { display: none; }
-    .container { margin: 20px; }
-  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
   <div class="container" id="formView">
@@ -19,25 +15,55 @@
     <form id="familyForm">
       <input type="text" id="name" placeholder="Name" required>
       <select id="relationType">
-        <option value="parent">Parent of</option>
-        <option value="child">Child of</option>
+        <optgroup label="Immediate Family">
+          <option value="parent">Parent</option>
+          <option value="child">Child</option>
+          <option value="sibling">Sibling</option>
+          <option value="spouse">Spouse</option>
+        </optgroup>
+        <optgroup label="Extended Family">
+          <option value="grandparent">Grandparent</option>
+          <option value="grandchild">Grandchild</option>
+          <option value="uncle/aunt">Uncle/Aunt</option>
+          <option value="nephew/niece">Nephew/Niece</option>
+          <option value="cousin">Cousin</option>
+        </optgroup>
+        <optgroup label="In-Law">
+          <option value="parent-in-law">Parent-in-law</option>
+          <option value="sibling-in-law">Sibling-in-law</option>
+          <option value="child-in-law">Child-in-law</option>
+        </optgroup>
+        <optgroup label="Step and Half">
+          <option value="step-parent">Step-Parent</option>
+          <option value="step-sibling">Step-Sibling</option>
+          <option value="step-child">Step-Child</option>
+          <option value="half-sibling">Half-Sibling</option>
+        </optgroup>
+        <optgroup label="Non-Biological">
+          <option value="adoptive-parent">Adoptive Parent</option>
+          <option value="adoptive-child">Adoptive Child</option>
+          <option value="guardian">Guardian</option>
+          <option value="ward">Ward</option>
+          <option value="godparent">Godparent</option>
+          <option value="godchild">Godchild</option>
+        </optgroup>
+        <option value="custom">Custom</option>
       </select>
       <input type="text" id="relation" placeholder="Parent/Child Name" required>
+      <input type="text" id="customRelation" placeholder="Custom Relation" style="display:none;">
       <button type="button" id="addMember">Add Member</button>
-      <button id="exportJson">Export JSON</button>
-      <label for="importJson" class="button">Import JSON</label>
-      <input type="file" id="importJson" accept="application/json" style="display: none;">
     </form>
     <ul id="membersList"></ul>
     <button id="viewGraph">View Family Tree</button>
+    <button id="exportJson">Export JSON</button>
+    <label for="importJson" class="button">Import JSON</label>
+    <input type="file" id="importJson" accept="application/json" style="display: none;">
   </div>
 
-  <div class="container" id="graphView">
+  <div class="container" id="graphView" style="display: none;">
     <h2>Family Tree Graph</h2>
-    <div id="familyTree" style="height: 500px;"></div>
+    <div id="familyTree"></div>
     <button id="editForm">Edit Family Tree</button>
   </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
