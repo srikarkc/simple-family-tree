@@ -85,7 +85,7 @@ function renderFamilyTree() {
   const options = {
     layout: {
       hierarchical: {
-        direction: "UD",
+        direction: "DU",
         sortMethod: "directed",
       },
     },
