@@ -131,10 +131,37 @@ label.button {
   cursor: pointer;
   font-size: 1rem;
   text-align: center;
-  margin: 10px 0;
+  margin: 10px auto;
   transition: background-color 0.3s;
 }
 
 label.button:hover {
   background-color: #303f9f;
+}
+
+/* Help Modal Styling */
+#helpModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+}
+
+#modalOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }

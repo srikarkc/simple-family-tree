@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
   <script src="app.js" defer></script>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
   <div class="container" id="formView">
@@ -58,6 +59,7 @@
     <button id="exportJson">Export JSON</button>
     <label for="importJson" class="button">Import JSON</label>
     <input type="file" id="importJson" accept="application/json" style="display: none;">
+    <button id="helpButton">Help</button>
   </div>
 
   <div class="container" id="graphView" style="display: none;">
@@ -65,5 +67,19 @@
     <div id="familyTree"></div>
     <button id="editForm">Edit Family Tree</button>
   </div>
+
+  <!-- Help Modal -->
+  <div id="helpModal">
+    <h2>How to Use the Family Tree App</h2>
+    <p>
+      1. Use the form to add family members by providing their name, relationship, and type of relation.<br>
+      2. Select "View Family Tree" to visualize the relationships.<br>
+      3. You can export the family tree as a JSON file using "Export JSON".<br>
+      4. Use "Import JSON" to upload an existing family tree.<br>
+      5. To edit the tree, return to the form using "Edit Family Tree".
+    </p>
+    <button id="closeHelp">Close</button>
+  </div>
+  <div id="modalOverlay"></div>
 </body>
 </html>

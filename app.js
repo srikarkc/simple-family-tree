@@ -26,12 +26,6 @@ document.getElementById("addMember").addEventListener("click", () => {
     return;
   }
 
-  // Validate unique names
-  if (familyData.some(member => member.name === name)) {
-    alert(`The name "${name}" is already used. Names must be unique.`);
-    return;
-  }
-
   // Prevent circular relationships
   if (name === relation) {
     alert("A person cannot have a relationship with themselves.");
@@ -91,7 +85,7 @@ function renderFamilyTree() {
   const options = {
     layout: {
       hierarchical: {
-        direction: "DU",
+        direction: "UD",
         sortMethod: "directed",
       },
     },
@@ -158,3 +152,15 @@ function updateMembersList() {
     membersList.innerHTML += `<li>${name} (${type} of ${relation})</li>`;
   });
 }
+
+// Show help modal
+document.getElementById("helpButton").addEventListener("click", () => {
+  document.getElementById("helpModal").style.display = "block";
+  document.getElementById("modalOverlay").style.display = "block";
+});
+
+// Close help modal
+document.getElementById("closeHelp").addEventListener("click", () => {
+  document.getElementById("helpModal").style.display = "none";
+  document.getElementById("modalOverlay").style.display = "none";
+});
